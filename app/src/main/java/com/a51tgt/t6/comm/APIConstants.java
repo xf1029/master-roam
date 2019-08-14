@@ -35,6 +35,9 @@ public final class APIConstants {
     //3. 获取设备绑定的订单信息
     public final static String Get_Flow_Package = server_host + "/tgtapp/georderinfobycode";
     //4. 根据app标识获取提供的产品类型 （暂不调试）
+    public final static String Get_Flow_MallGroup = server_host + "/tgtapp/getproductareas";
+
+
     //5. 根据产品区域获取产品
         //原来用来获取商品产品列表
     public final static String Get_Flow_Mall = server_host + "/tgtapp/getproductbyarea";
