@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: __local_aars__:/Users/CrystalJin/Desktop/Summer 2019/Tuge Intern/t6-fyj/fyj/zbarcode/libs/zbardecoder.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../zbarcode/libs/zbardecoder.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

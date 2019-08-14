@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: me.codeboy.android:align-text-view:2.3.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cf9151b9283e430863e189c12849250c/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cf9151b9283e430863e189c12849250c/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.codeboy.android/align-text-view/2.3.2/6a4da87609c5267bdcc4e571cf569e485dd8c1c1/align-text-view-2.3.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

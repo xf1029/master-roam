@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical">
+
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_background"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/bottom_chart" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/title_data_store"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginStart="15dp"-->
+            <!--android:text="@string/title_global_data_store"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="34sp"/>-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/rl_fragment_fole_category"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/shape_ffffff_from_30"-->
+            <!--android:padding="5dp"-->
+            <!--android:layout_alignBottom="@id/iv_background"-->
+            <!--android:layout_marginBottom="30dp"-->
+            <!--android:layout_marginStart="15dp"-->
+            <!--&gt;-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/iv_flow_category_fragment"-->
+                <!--android:layout_width="20dp"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:src="@mipmap/search"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_enter_country"-->
+                <!--android:layout_toEndOf="@+id/iv_flow_category_fragment"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginEnd="5dp"-->
+                <!--android:background="@null"-->
+                <!--android:hint="@string/title_shop_search"-->
+                <!--android:textSize="16sp"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_flow_category_fragment_search"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginStart="15dp"-->
+                <!--android:layout_marginEnd="13dp"-->
+                <!--android:layout_toEndOf="@id/tv_enter_country"-->
+                <!--android:text="@string/search"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:textSize="16sp"-->
+                <!--android:visibility="gone"-->
+                <!--/>-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/iv_clear"-->
+                <!--android:layout_width="15dp"-->
+                <!--android:layout_height="15dp"-->
+                <!--android:src="@drawable/delete"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_toEndOf="@id/tv_flow_category_fragment_search"-->
+                <!--android:visibility="gone"-->
+                <!--/>-->
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dip"
+            android:layout_gravity="bottom"
+            android:background="#33000000"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="10"/>
+
+        <TextView
+            android:id="@+id/tv_pager_title"
+            android:layout_width="0dp"
+            android:layout_height="35dip"
+            android:layout_weight="8"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dip"
+            android:text="加载图片轮播失败"
+            android:textColor="@android:color/white" />
+
+        <LinearLayout
+            android:id="@+id/lineLayout_dot"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="2"
+            android:gravity="center|right"
+            android:orientation="horizontal"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"></LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleView"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+</LinearLayout>
