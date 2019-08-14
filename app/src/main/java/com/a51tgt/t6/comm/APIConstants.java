@@ -18,8 +18,8 @@ public final class APIConstants {
 //    public final static String server_domain = BuildConfig.DEBUG ? /*"192.168.0.168/TGT" : "as2.51tgt.com";//*/"mall.51tgt.com":"mall.51tgt.com";
 //    public final static String server_domain = BuildConfig.DEBUG ? "as2.51tgt.com":"mall.51tgt.com";
     /**********   更改环境   ************/
-//    private final static String server_domain = "apollo.51tgt.com:8060/api-publicappmodule";
-   public final static String server_domain = "47.103.163.250/api-publicappmodule";
+    private final static String server_domain = "apollo.51tgt.com:8060/api-publicappmodule";
+//   public final static String server_domain = "47.103.163.250/api-publicappmodule";
     /**********   更改Stripe秘钥   ************/
     //测试秘钥
 //    public final static String Stripe_key = "pk_test_wmOvlNMAN1YFJO3hqF7HA0Mt00nIWOBsEx";

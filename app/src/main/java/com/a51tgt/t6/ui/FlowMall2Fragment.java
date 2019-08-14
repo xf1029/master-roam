@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
@@ -30,15 +32,15 @@ import com.a51tgt.t6.bean.AreaInfo;
 import com.a51tgt.t6.bean.HttpResponseData;
 import com.a51tgt.t6.ui.view.ImageCarousel;
 import com.a51tgt.t6.ui.view.ImageInfo;
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.backends.pipeline.PipelineDraweeController;
-import com.facebook.drawee.drawable.ScalingUtils;
-import com.facebook.drawee.generic.GenericDraweeHierarchy;
-import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
-import com.facebook.drawee.view.SimpleDraweeView;
-import com.facebook.imagepipeline.common.ResizeOptions;
-import com.facebook.imagepipeline.request.ImageRequest;
-import com.facebook.imagepipeline.request.ImageRequestBuilder;
+//import com.facebook.drawee.backends.pipeline.Fresco;
+//import com.facebook.drawee.backends.pipeline.PipelineDraweeController;
+//import com.facebook.drawee.drawable.ScalingUtils;
+//import com.facebook.drawee.generic.GenericDraweeHierarchy;
+//import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
+//import com.facebook.drawee.view.SimpleDraweeView;
+//import com.facebook.imagepipeline.common.ResizeOptions;
+//import com.facebook.imagepipeline.request.ImageRequest;
+//import com.facebook.imagepipeline.request.ImageRequestBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +79,15 @@ public class FlowMall2Fragment extends Fragment {
         FlowMall2Fragment fragment = new FlowMall2Fragment();
         return fragment;
     }
+    private void changeToAnotherFragment(){
+        //如果是用的v4的包，则用getActivity().getSuppoutFragmentManager();
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        //注意v4包的配套使用
+        Fragment fragment = new FlowMallFragment();
+
+        fm.beginTransaction().replace( R.layout.fragment_flow_mall_2,fragment).commit();
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,7 +99,7 @@ public class FlowMall2Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        Fresco.initialize(getContext());
+//        Fresco.initialize(getContext());
         View rootView = inflater.inflate(R.layout.fragment_flow_mall_2, container, false);
         root = rootView;
         rv_area_package = rootView.findViewById(R.id.recycleView);
@@ -98,7 +109,7 @@ public class FlowMall2Fragment extends Fragment {
         width =(width1-36)/2;
         initView(rootView);
         initEvent();
-        imageStart();
+//        imageStart();
 
 //        rl_fragment_fole_category = rootView.findViewById(R.id.rl_fragment_fole_category);
 //        rl_fragment_fole_category.setOnClickListener(new View.OnClickListener() {
@@ -135,9 +146,11 @@ public class FlowMall2Fragment extends Fragment {
         adapter.setOnItemClickListener(new simpleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+
+//                changeToAnotherFragment();
 //                AreaInfo areaInfo = new AreaInfo(mData.get(position));
 //                Log.i("postion:", areaInfo.title);
-                skip("", "");
+//                skip("", "");
             }
         });
 
@@ -173,12 +186,35 @@ public class FlowMall2Fragment extends Fragment {
         return rootView;
     }
 
+    @SuppressLint("ResourceType")
     public void skip(String name, String title){
+
+
+
+        Fragment fragment=new Fragment();
+
+        //获取Fragment的管理器
+
+        FragmentManager fragmentManager=getFragmentManager();
+
+//开启fragment的事物,在这个对象里进行fragment的增删替换等操作。
+
+        FragmentTransaction ft=fragmentManager.beginTransaction();
+
+        //跳转到fragment，第一个参数为所要替换的位置id，第二个参数是替换后的fragment
+
+        ft.replace(R.layout.fragment_flow_mall,fragment);
+
+        //提交事物
+        ft.commit();
+
+
+
         Intent intent = new Intent(getActivity(), FlowActivity.class);
         intent.putExtra("areaType", "test");
         intent.putExtra("areaTitle", "test");
 //        intent.putExtra("areaType",i);
-        startActivity(intent);
+//        startActivity(intent);
     }
     /**
      * 初始化事件
@@ -205,7 +241,7 @@ public class FlowMall2Fragment extends Fragment {
         mLineLayoutDot =rootview. findViewById(R.id.lineLayout_dot);
 
     }
-
+/*
     private void imageStart() {
         //设置图片轮播
         int[] imgaeIds = new int[]{R.id.pager_image1, R.id.pager_image2, R.id.pager_image3, R.id.pager_image4,

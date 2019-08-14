@@ -319,7 +319,7 @@ APIConstants.alertInfo="";
                    return com.a51tgt.t6.ui.FlowMall2Fragment.newInstance();
 
 
-//                    return com.a51tgt.t6.ui.FlowMallFragment.newInstance();
+//                   return com.a51tgt.t6.ui.FlowMallFragment.newInstance();
                 case 2:
                     return com.a51tgt.t6.ui.DeviceSettingFragment.newInstance();
                 default:
