@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -30,6 +32,9 @@ import com.a51tgt.t6.R;
 import com.a51tgt.t6.adapter.simpleAdapter;
 import com.a51tgt.t6.bean.AreaInfo;
 import com.a51tgt.t6.bean.HttpResponseData;
+import com.a51tgt.t6.comm.APIConstants;
+import com.a51tgt.t6.net.OkHttpClientManager;
+import com.a51tgt.t6.net.SendRequest;
 import com.a51tgt.t6.ui.view.ImageCarousel;
 import com.a51tgt.t6.ui.view.ImageInfo;
 //import com.facebook.drawee.backends.pipeline.Fresco;
@@ -44,6 +49,7 @@ import com.a51tgt.t6.ui.view.ImageInfo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class FlowMall2Fragment extends Fragment {
@@ -146,42 +152,48 @@ public class FlowMall2Fragment extends Fragment {
         adapter.setOnItemClickListener(new simpleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+<<<<<<< HEAD
 
 //                changeToAnotherFragment();
 //                AreaInfo areaInfo = new AreaInfo(mData.get(position));
 //                Log.i("postion:", areaInfo.title);
 //                skip("", "");
+=======
+                AreaInfo areaInfo = new AreaInfo(mData.get(position));
+                Log.i("postion:", areaInfo.title);
+                skip(areaInfo.group_name, areaInfo.title);
+>>>>>>> 6c40fc397279db05e93dfb420e6b77554cfd7b5e
             }
         });
 
 
-//        PackageManager packageManager = getActivity().getPackageManager();
-//
-//        PackageInfo packInfo = null;
-//        try {
-//            String str = getContext().getPackageName();
-//
-//            packInfo = packageManager.getPackageInfo(str,0);
-//        } catch (PackageManager.NameNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        String lang;
-//        if (Locale.getDefault().getLanguage().contains("ja")){
-//            lang = "jp";
-//
-//        }else if (Locale.getDefault().getLanguage().contains("zh")){
-//            lang = "zh";
-//
-//        }else {
-//
-//            lang ="en";
-//        }
-//        String version = packInfo.versionName;
-//        OkHttpClientManager.Param[] params = new OkHttpClientManager.Param[2];
-//        params[0] = new OkHttpClientManager.Param("lang", lang);
-//        params[1] = new OkHttpClientManager.Param("ver",  version);
-//
-//        new SendRequest(APIConstants.Get_Area_Mall, params, new MyHandler(), 1);
+        PackageManager packageManager = getActivity().getPackageManager();
+
+        PackageInfo packInfo = null;
+        try {
+            String str = getContext().getPackageName();
+
+            packInfo = packageManager.getPackageInfo(str,0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        String lang;
+        if (Locale.getDefault().getLanguage().contains("ja")){
+            lang = "jp";
+
+        }else if (Locale.getDefault().getLanguage().contains("zh")){
+            lang = "zh";
+
+        }else {
+
+            lang ="en";
+        }
+        String version = packInfo.versionName;
+        OkHttpClientManager.Param[] params = new OkHttpClientManager.Param[2];
+        params[0] = new OkHttpClientManager.Param("lang", lang);
+        params[1] = new OkHttpClientManager.Param("ver",  version);
+
+        new SendRequest(APIConstants.Get_Flow_MallGroup, params, new MyHandler(), 1);
 
         return rootView;
     }
@@ -211,8 +223,8 @@ public class FlowMall2Fragment extends Fragment {
 
 
         Intent intent = new Intent(getActivity(), FlowActivity.class);
-        intent.putExtra("areaType", "test");
-        intent.putExtra("areaTitle", "test");
+//        intent.putExtra("areaType", name);
+//        intent.putExtra("areaTitle", title);
 //        intent.putExtra("areaType",i);
 //        startActivity(intent);
     }

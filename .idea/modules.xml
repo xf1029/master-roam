@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/master-roam.iml" filepath="$PROJECT_DIR$/master-roam.iml" />
       <module fileurl="file://$PROJECT_DIR$/new t6.iml" filepath="$PROJECT_DIR$/new t6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zbarcode/zbarcode.iml" filepath="$PROJECT_DIR$/zbarcode/zbarcode.iml" />
       <module fileurl="file://$PROJECT_DIR$/zbarcode/zbarcode.iml" filepath="$PROJECT_DIR$/zbarcode/zbarcode.iml" />
     </modules>
   </component>
