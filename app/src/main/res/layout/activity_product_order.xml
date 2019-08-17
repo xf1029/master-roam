@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/order_bg"
+    xmlns:qinc="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:orientation="vertical"
+      android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="match_parent"
+        android:src="@drawable/ic_order"
+        android:scaleType="fitXY"
+        android:layout_height="wrap_content" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="-70dp"
+        android:orientation="vertical"
+        android:background="@drawable/shape_ffffff_from_10"
+        android:layout_height="wrap_content">
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:text="one daypass"
+            android:layout_marginLeft="@dimen/detaileft_margin"
+            android:textSize="22dp"
+            android:layout_marginTop="@dimen/detail_top_margin"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="*2"
+            android:textSize="19dp"
+            android:textColor="@color/red"
+            android:layout_marginLeft="@dimen/detaileft_margin"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/detaileft_margin"
+            android:layout_marginRight="@dimen/detaileft_margin"
+            android:layout_marginTop="@dimen/detail_top_margin"
+            android:background="@color/detail_des"
+            android:layout_height="@dimen/detail_line_height">
+        </View>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="horizontal"
+           android:layout_marginTop="@dimen/detail_top_margin"
+           android:layout_height="wrap_content">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_weight="1"
+               android:text="@string/effective_days"
+               android:layout_marginLeft="@dimen/detaileft_margin"
+               android:layout_height="wrap_content" />
+
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:text="3 days"
+               android:layout_marginRight="@dimen/detaileft_margin"
+               android:layout_height="wrap_content" />
+
+
+       </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/detaileft_margin"
+            android:layout_marginTop="@dimen/detaileft_margin"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="Actual Payment"
+                android:layout_marginLeft="@dimen/detaileft_margin"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="USD 10"
+                android:textColor="@color/red"
+                android:textSize="20dp"
+
+                android:layout_marginRight="@dimen/detaileft_margin"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_marginLeft="30dp"
+          android:layout_marginRight="30dp"
+          android:layout_marginTop="@dimen/detaileft_margin"
+          android:orientation="vertical"
+
+          android:background="@drawable/shape_ffffff_from_10"
+          android:layout_height="wrap_content">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:orientation="horizontal"
+              android:paddingTop="@dimen/detaileft_margin"
+              android:paddingBottom="@dimen/detaileft_margin"
+              android:layout_height="wrap_content">
+          <ImageView
+              android:layout_width="wrap_content"
+              android:src="@drawable/ic_alipay"
+              android:layout_gravity="center"
+              android:layout_marginLeft="@dimen/detaileft_margin"
+              android:layout_height="wrap_content" />
+
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:text="支付宝"
+              android:layout_weight="1"
+              android:layout_gravity="center"
+              android:layout_marginLeft="@dimen/detaileft_margin"
+
+              android:layout_marginRight="@dimen/detaileft_margin"
+              android:layout_height="wrap_content" />
+
+              <ImageView
+                  android:layout_width="wrap_content"
+                  android:src="@drawable/ic_select"
+                  android:layout_gravity="center"
+                  android:layout_marginRight="@dimen/detaileft_margin"
+                  android:layout_height="wrap_content" />
+
+
+          </LinearLayout>
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:orientation="horizontal"
+              android:paddingTop="@dimen/detaileft_margin"
+              android:paddingBottom="@dimen/detaileft_margin"
+              android:layout_height="wrap_content">
+              <ImageView
+                  android:layout_width="wrap_content"
+                  android:src="@drawable/ic_wechat"
+                  android:layout_gravity="center"
+                  android:layout_marginLeft="@dimen/detaileft_margin"
+                  android:layout_height="wrap_content" />
+
+
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:text="微信"
+                  android:layout_weight="1"
+                  android:layout_gravity="center"
+                  android:layout_marginLeft="@dimen/detaileft_margin"
+
+                  android:layout_marginRight="@dimen/detaileft_margin"
+                  android:layout_height="match_parent" />
+
+              <ImageView
+                  android:layout_width="wrap_content"
+                  android:src="@drawable/ic_unselect"
+                  android:layout_gravity="center"
+                  android:layout_marginRight="@dimen/detaileft_margin"
+                  android:layout_height="wrap_content" />
+
+
+          </LinearLayout>
+
+
+
+      </LinearLayout>
+
+
+
+
+
+
+
+
+
+  </LinearLayout>
+
+    <Button
+        android:id="@+id/tv_east_buy_flow"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+
+        android:text="@string/button_purchase"
+        android:textColor="#eeeeee"
+        android:background="@drawable/ic_orderbuy"
+        android:textSize="18dp"
+
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        />
+
+
+</LinearLayout>

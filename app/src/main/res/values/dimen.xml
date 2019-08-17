@@ -11,4 +11,11 @@
     <dimen name="popmenu_width">120.0dip</dimen>
     <dimen name="popmenu_yoff">0.0dip</dimen>
     <dimen name="dip2pix">1.0dip</dimen>
+
+    <!--detail-->
+    <dimen name="detaileft_margin">15dp</dimen>
+    <dimen name="detail_top_margin">20dp</dimen>
+    <dimen name="detail_line_height">0.3dp</dimen>
+    <dimen name="nav_height">90dp</dimen>
+
 </resources>

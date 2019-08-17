@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:qinc="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_weight="1"
+    android:layout_height="wrap_content">
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:orientation="vertical"
+      android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="match_parent"
+        android:src="@drawable/ic_detail"
+        android:scaleType="fitXY"
+        android:layout_height="wrap_content" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="-70dp"
+
+        android:orientation="vertical"
+        android:background="@drawable/shape_ffffff_from_10"
+        android:layout_height="wrap_content">
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:text="one daypass"
+            android:layout_marginLeft="@dimen/detaileft_margin"
+            android:textSize="22dp"
+            android:layout_marginTop="@dimen/detail_top_margin"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="USD 10"
+            android:textSize="19dp"
+            android:textColor="@color/red"
+            android:layout_marginLeft="@dimen/detaileft_margin"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/detaileft_margin"
+            android:layout_marginRight="@dimen/detaileft_margin"
+            android:layout_marginTop="@dimen/detail_top_margin"
+            android:background="@color/detail_des"
+            android:layout_height="@dimen/detail_line_height">
+        </View>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="horizontal"
+           android:layout_marginTop="@dimen/detail_top_margin"
+           android:layout_height="wrap_content">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_weight="1"
+               android:text="@string/device_flow_total_count"
+               android:layout_marginLeft="@dimen/detaileft_margin"
+               android:layout_height="wrap_content" />
+
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:text="3 GB"
+               android:layout_marginRight="@dimen/detaileft_margin"
+               android:layout_height="wrap_content" />
+
+
+       </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/detaileft_margin"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/effective_days"
+                android:layout_marginLeft="@dimen/detaileft_margin"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="3 days"
+                android:layout_marginRight="@dimen/detaileft_margin"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/detaileft_margin"
+            android:layout_marginRight="@dimen/detaileft_margin"
+            android:layout_marginTop="@dimen/detail_top_margin"
+            android:background="@color/detail_des"
+
+            android:layout_height="@dimen/detail_line_height">
+        </View>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="@string/device_flow_countries"
+            android:textSize="20dp"
+            android:layout_marginLeft="@dimen/detaileft_margin"
+            android:layout_marginTop="@dimen/detail_top_margin"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="中国"
+            android:layout_marginLeft="@dimen/detaileft_margin"
+            android:layout_marginTop="@dimen/detaileft_margin"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/detaileft_margin"
+            android:layout_marginRight="@dimen/detaileft_margin"
+            android:background="@color/detail_des"
+
+            android:layout_marginTop="@dimen/detail_top_margin"
+            android:layout_height="@dimen/detail_line_height">
+        </View>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Terms and Conditions"
+            android:textSize="20dp"
+            android:layout_marginLeft="@dimen/detaileft_margin"
+            android:layout_marginTop="@dimen/detail_top_margin"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="1.生效说明：该流量包在您到达目的地后首次使用自动激活，激活后立即生效并开始计时。1.生效说明：该流量包在您到达目的地后首次使用自动激活，激活后立即生效并开始计时。1.生效说明：该流量包在您到达目的地后首次使用自动激活，激活后立即生效并开始计时。1.生效说明：该流量包在您到达目的地后首次使用自动激活，激活后立即生效并开始计时。1.生效说明：该流量包在您到达目的地后首次使用自动激活，激活后立即生效并开始计时。1.生效说明：该流量包在您到达目的地后首次使用自动激活，激活后立即生效并开始计时。1.生效说明：该流量包在您到达目的地后首次使用自动激活，激活后立即生效并开始计时。1.生效说明：该流量包在您到达目的地后首次使用自动激活，激活后立即生效并开始计时。1.生效说明：该流量包在您到达目的地后首次使用自动激活，激活后立即生效并开始计时。1.生效说明：该流量包在您到达目的地后首次使用自动激活，激活后立即生效并开始计时。1.生效说明：该流量包在您到达目的地后首次使用自动激活，激活后立即生效并开始计时。1.生效说明：该流量包在您到达目的地后首次使用自动激活，激活后立即生效并开始计时"
+            android:layout_marginLeft="@dimen/detaileft_margin"
+            android:lineSpacingExtra="8sp"
+            android:textColor="@color/detail_des"
+            android:layout_marginTop="@dimen/detaileft_margin"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+  </LinearLayout>
+</ScrollView>
+
+    <LinearLayout
+        android:id="@+id/ll_create_order_layout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/tv_price_type"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="right|center_vertical"
+            android:textSize="14sp"
+            android:text="Amount Total"
+            android:paddingLeft="20dp"
+            android:background="@color/white"/>
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="USD 10"
+            android:textColor="@color/red"
+            android:textSize="22sp"
+            android:paddingLeft="2dp"
+            android:background="@color/white"/>
+
+
+        <Button
+            android:id="@+id/bt_commit"
+            android:layout_height="45dp"
+            android:layout_width="100dp"
+            android:layout_marginRight="@dimen/detaileft_margin"
+            android:background="@drawable/ic_buy"
+            android:text="order now"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

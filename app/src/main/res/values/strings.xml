@@ -323,9 +323,10 @@
     <string name="wrong_qrcode">The QR code is invalid,Please contact customer service</string>
     <string name="title_more">More</string>
     <string name="time_out">Request timeout, please check the network</string>
-<string name="title_concetttt">Device connecting...</string>
+    <string name="title_concetttt">Device connecting...</string>
     <string name="title_sim_chinese">Simplified Chinese</string>
     <string name="title_restart_device">Setting successful!  Please restart the device</string>
     <string name="title_buy_warn">At most</string>
     <string name="tilte_number">copies</string>
+    <string name="title_activity_detail">DetailActivity</string>
 </resources>

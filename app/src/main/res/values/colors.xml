@@ -62,4 +62,11 @@
     <color name="baseColorLight">#10b5ff</color>
     <color name="baseColorDark">#bf10b5ff</color>
     <color name="yellow">#fff000</color>
+
+
+
+    <!--detail-->
+
+    <color name="detail_des">#7a7a7a</color>
+    <color name="order_bg">#f4f4f4</color>
 </resources>

@@ -166,35 +166,6 @@ public class DeviceSetDialog implements OnNoticeUI {
                 });
     }
 
-    public void CloseDeviceHotSpotDialog(final Context context){
-        final AlertDialog dialog = new AlertDialog.Builder(context).create();
-        dialog.setView(LayoutInflater.from(context).inflate(R.layout.dialog_close_device_hotspot, null));
-        dialog.show();
-        dialog.getWindow().setContentView(R.layout.dialog_close_device_hotspot);
-        final TextView tv_error_tip = (TextView) dialog.getWindow().findViewById(R.id.tv_error_tip);
-
-
-        dialog.getWindow().findViewById(R.id.ok)
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //TcpUtil.getInstance().sendMessage(TcpConfig.CLOSE_WIFIAP, new DialogHandler(context, tv_error_tip, dialog, CloseDeviceHotSpotDialog_What), CloseDeviceHotSpotDialog_What);
-                        BluetoothUtil.getInstance().sendMessage(TcpConfig.CLOSE_WIFIAP);
-                        dialog.dismiss();
-
-                    }
-                });
-        dialog.getWindow().findViewById(R.id.cancel)
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-    }
-
-
-//    }
 
 
 
@@ -429,59 +400,6 @@ public void setDefaultPwd (String cmd){
 
 
 
-    public void SetBlackListDialog(final Context context){final AlertDialog dialog = new AlertDialog.Builder(context).create();
-        dialog.setView(LayoutInflater.from(context).inflate(R.layout.dialog_set_blacklist, null));
-        dialog.show();
-        dialog.getWindow().setContentView(R.layout.dialog_set_blacklist);
-        final TextView tv_error_tip = (TextView) dialog.getWindow().findViewById(R.id.tv_error_tip);
-        final EditText et_blacklist = (EditText) dialog.getWindow().findViewById(R.id.et_blacklist);
-
-        et_blacklist.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                InputMethodManager inputManager =
-                        (InputMethodManager)et_blacklist.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.showSoftInput(et_blacklist, 0);
-            }
-        }, 1000);
-
-        dialog.getWindow().findViewById(R.id.ok)
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        tv_error_tip.setVisibility(View.GONE);
-//                        if(TextUtils.isEmpty(et_blacklist.getText())){
-//                            tv_error_tip.setVisibility(View.VISIBLE);
-//                            tv_error_tip.setText(context.getResources().getText(R.string.error_set_blacklist).toString());
-//                            return;
-//                        }
-                        JSONObject object = new JSONObject();
-                        try {
-                            object.put(TcpConfig.KEY, TcpConfig.SET_BLACK_LIST);
-//                            if (!TextUtils.isEmpty(et_blacklist.getText().toString())) {
-//                                object.put(TcpConfig.VALUE, et_blacklist.getText().toString());
-//                            }
-                            object.put(TcpConfig.VALUE, true);
-                            Log.i("tag","gegegeg"+object.toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            tv_error_tip.setVisibility(View.VISIBLE);
-                            tv_error_tip.setText(context.getResources().getText(R.string.error_set_device).toString());
-                            return;
-                        }
-                        if(APIConstants.isBluetoothConnection)
-//                            BluetoothUtil.getInstance().sendMessage(object.toString());
-                        dialog.dismiss();
-                    }
-                });
-        dialog.getWindow().findViewById(R.id.cancel)
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-    }
 
     public void deviceStatusCheck(final Context context) {
         mContext = context;

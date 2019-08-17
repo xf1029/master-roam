@@ -16,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.a51tgt.t6.comm.APIConstants;
 import com.a51tgt.t6.utils.AppLanguageUtils;
@@ -40,7 +42,9 @@ public class BaseActivity extends AppCompatActivity {
 //    }
       super.onCreate(savedInstanceState);
 //    PushAgent.getInstance(this).onAppStart();
-
+    this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+    this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
       mContext = this;
       instance = this;
       wifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);

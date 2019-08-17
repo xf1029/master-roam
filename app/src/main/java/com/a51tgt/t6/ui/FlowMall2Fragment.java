@@ -152,17 +152,14 @@ public class FlowMall2Fragment extends Fragment {
         adapter.setOnItemClickListener(new simpleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-<<<<<<< HEAD
 
 //                changeToAnotherFragment();
 //                AreaInfo areaInfo = new AreaInfo(mData.get(position));
 //                Log.i("postion:", areaInfo.title);
-//                skip("", "");
-=======
-                AreaInfo areaInfo = new AreaInfo(mData.get(position));
-                Log.i("postion:", areaInfo.title);
-                skip(areaInfo.group_name, areaInfo.title);
->>>>>>> 6c40fc397279db05e93dfb420e6b77554cfd7b5e
+                skip("", "");
+//                AreaInfo areaInfo = new AreaInfo(mData.get(position));
+//                Log.i("postion:", areaInfo.title);
+//                skip(areaInfo.group_name, areaInfo.title);
             }
         });
 
@@ -202,23 +199,23 @@ public class FlowMall2Fragment extends Fragment {
     public void skip(String name, String title){
 
 
-
-        Fragment fragment=new Fragment();
-
-        //获取Fragment的管理器
-
-        FragmentManager fragmentManager=getFragmentManager();
-
-//开启fragment的事物,在这个对象里进行fragment的增删替换等操作。
-
-        FragmentTransaction ft=fragmentManager.beginTransaction();
-
-        //跳转到fragment，第一个参数为所要替换的位置id，第二个参数是替换后的fragment
-
-        ft.replace(R.layout.fragment_flow_mall,fragment);
-
-        //提交事物
-        ft.commit();
+//
+//        Fragment fragment=new Fragment();
+//
+//        //获取Fragment的管理器
+//
+//        FragmentManager fragmentManager=getFragmentManager();
+//
+////开启fragment的事物,在这个对象里进行fragment的增删替换等操作。
+//
+//        FragmentTransaction ft=fragmentManager.beginTransaction();
+//
+//        //跳转到fragment，第一个参数为所要替换的位置id，第二个参数是替换后的fragment
+//
+//        ft.replace(R.layout.fragment_flow_mall,fragment);
+//
+//        //提交事物
+//        ft.commit();
 
 
 
@@ -226,7 +223,7 @@ public class FlowMall2Fragment extends Fragment {
 //        intent.putExtra("areaType", name);
 //        intent.putExtra("areaTitle", title);
 //        intent.putExtra("areaType",i);
-//        startActivity(intent);
+        startActivity(intent);
     }
     /**
      * 初始化事件

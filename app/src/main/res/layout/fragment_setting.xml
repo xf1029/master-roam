@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/nav_height"
         android:layout_centerHorizontal="true"
         android:background="@null"
         android:gravity="center"

@@ -128,7 +128,7 @@ public class FlowActivity extends BaseActivity {
     }
 
     public void enter_this_product(FlowProductInfo flowProductInfo){
-        Intent intent = new Intent(FlowActivity.this, FlowProductDetailActivity.class);
+        Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra("product_id", flowProductInfo.productid);
         intent.putExtra("url", APIConstants.server_host + flowProductInfo.url);
         Log.i("urlurlulr:",APIConstants.server_host + flowProductInfo.url+flowProductInfo.price);

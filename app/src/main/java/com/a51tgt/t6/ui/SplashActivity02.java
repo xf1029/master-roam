@@ -32,7 +32,6 @@ public class SplashActivity02 extends BaseActivity {
     private WifiManager wifiManager;
     private List<ScanResult> wifiList;
 
-    private SelectWifiFragment selectWifiFragment;
     private RecyclerView rvWifi;
     private View anchor;
     private LinearLayout ll_connect_wifi;
