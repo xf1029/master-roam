@@ -85,11 +85,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar2" />
         <activity
-            android:name=".ui.FlowProductDetailActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar2" />
-        <activity
             android:name=".ui.DeviceOrdersActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"

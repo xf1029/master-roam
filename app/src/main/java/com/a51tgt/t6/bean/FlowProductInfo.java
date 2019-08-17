@@ -3,6 +3,7 @@ package com.a51tgt.t6.bean;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**

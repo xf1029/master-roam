@@ -43,7 +43,7 @@ public class NewFlowMallAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.item_flow_product_03, null);
+        View itemView = inflater.inflate(R.layout.item_flow_product_02, null);
         final ItemViewHolder viewHolder = new ItemViewHolder(itemView);
         return viewHolder;
     }
@@ -64,26 +64,26 @@ public class NewFlowMallAdapter extends RecyclerView.Adapter {
         itemViewHolder.tv_price_type.setText(item.priceType);
         Picasso mPicasso = Picasso.with(mContext);
         mPicasso.setIndicatorsEnabled(false);
-        if (!item.coverImage.equals("")) {
-            mPicasso.load(APIConstants.server_host + item.coverImage)
-                    .into(itemViewHolder.iv_cover, new Callback() {
-                        @Override
-                        public void onSuccess() {
-                            Bitmap bitmap = ImageUtils.drawableToBitmap(itemViewHolder.iv_cover.getDrawable());
-//                android.view.ViewGroup.LayoutParams para;
-//                para = itemViewHolder.iv_cover.getLayoutParams();
-//                float height = (float) para.width * ((float)bitmap.getHeight() / (float) bitmap.getWidth());
-//                para.height = (int)height;
-//                itemViewHolder.iv_cover.setLayoutParams(para);
-                            //ImageViewUtil.matchAll(mContext, itemViewHolder.iv_cover);
-                        }
-
-                        @Override
-                        public void onError() {
-
-                        }
-                    });
-        }
+//        if (!item.coverImage.equals("")) {
+//            mPicasso.load(APIConstants.server_host + item.coverImage)
+//                    .into(itemViewHolder.iv_cover, new Callback() {
+//                        @Override
+//                        public void onSuccess() {
+//                            Bitmap bitmap = ImageUtils.drawableToBitmap(itemViewHolder.iv_cover.getDrawable());
+////                android.view.ViewGroup.LayoutParams para;
+////                para = itemViewHolder.iv_cover.getLayoutParams();
+////                float height = (float) para.width * ((float)bitmap.getHeight() / (float) bitmap.getWidth());
+////                para.height = (int)height;
+////                itemViewHolder.iv_cover.setLayoutParams(para);
+//                            //ImageViewUtil.matchAll(mContext, itemViewHolder.iv_cover);
+//                        }
+//
+//                        @Override
+//                        public void onError() {
+//
+//                        }
+//                    });
+//        }
         itemViewHolder.itemView.setTag(position);
 
         itemViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +119,7 @@ public class NewFlowMallAdapter extends RecyclerView.Adapter {
             //tv_subtitle = (TextView) convertView.findViewById(R.id.tv_subtitle);
             tv_price = (TextView) convertView.findViewById(R.id.tv_price);
             tv_price_type = (TextView) convertView.findViewById(R.id.tv_price_type);
-            iv_cover = (ImageView) convertView.findViewById(R.id.iv_cover);
+//            iv_cover = (ImageView) convertView.findViewById(R.id.iv_cover);
         }
     }
 

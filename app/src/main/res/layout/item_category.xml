@@ -33,6 +33,7 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
+            android:visibility="gone"
             android:layout_height="wrap_content">
 
             <TextView
@@ -45,27 +46,27 @@
                 android:textSize="12sp"
                 />
 
-            <TextView
-                android:id="@+id/lowest_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/lowest_price_type"
-                android:text="12"
-                android:textColor="@color/yellow"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:id="@+id/lowest_price"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="3dp"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_toEndOf="@id/lowest_price_type"-->
+                <!--android:text="12"-->
+                <!--android:textColor="@color/yellow"-->
+                <!--android:textSize="16sp"-->
+                <!--android:textStyle="bold" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/lowest_price"
-                android:text="@string/lowest_price_per_day"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="3dp"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_toEndOf="@id/lowest_price"-->
+                <!--android:text="@string/lowest_price_per_day"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="12sp" />-->
 
         </RelativeLayout>
 

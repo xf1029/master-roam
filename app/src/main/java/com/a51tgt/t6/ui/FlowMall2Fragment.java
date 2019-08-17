@@ -85,14 +85,7 @@ public class FlowMall2Fragment extends Fragment {
         FlowMall2Fragment fragment = new FlowMall2Fragment();
         return fragment;
     }
-    private void changeToAnotherFragment(){
-        //如果是用的v4的包，则用getActivity().getSuppoutFragmentManager();
-        FragmentManager fm = getActivity().getSupportFragmentManager();
-        //注意v4包的配套使用
-        Fragment fragment = new FlowMallFragment();
 
-        fm.beginTransaction().replace( R.layout.fragment_flow_mall_2,fragment).commit();
-    }
 
 
     @Override

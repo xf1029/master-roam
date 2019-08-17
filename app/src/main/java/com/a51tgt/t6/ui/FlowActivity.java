@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,6 +31,7 @@ import com.a51tgt.t6.bean.HttpResponseData;
 import com.a51tgt.t6.comm.APIConstants;
 import com.a51tgt.t6.net.OkHttpClientManager;
 import com.a51tgt.t6.net.SendRequest;
+import com.a51tgt.t6.ui.view.ObservableScrollView;
 import com.a51tgt.t6.utils.CommUtil;
 import com.a51tgt.t6.utils.GlideUtils;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -40,8 +42,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class FlowActivity extends BaseActivity {
+public class FlowActivity extends BaseActivity implements ObservableScrollView.OnObservableScrollViewListener{
     RecyclerView rv_daily, rv_monthly, rv_multiplemonths;
+
+
+
+    private ObservableScrollView mObservableScrollView;
+    private ImageView mTextView;
+    private int mHeight;
 
     NewFlowMallAdapter flowMallAdapter_daily, flowMallAdapter_monthly,
             flowMallAdapter_multiplemonths;
@@ -63,23 +71,53 @@ public class FlowActivity extends BaseActivity {
     TextView tv_title;
     View emptyView;
 
+    private LinearLayout mHeaderContent;
+
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flow);
         tv_title = findViewById(R.id.tv_title);
+
+        //初始化控件
+        mObservableScrollView = (ObservableScrollView) findViewById(R.id.srcoller);
+        mTextView = (ImageView) findViewById(R.id.iv_bg);
+
+        mHeaderContent = (LinearLayout) findViewById(R.id.ll_header_content);
+
+        //获取标题栏高度
+        ViewTreeObserver viewTreeObserver = mTextView.getViewTreeObserver();
+        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                mTextView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                mHeight = mTextView.getHeight() - mHeaderContent.getHeight();//这里取的高度应该为图片的高度-标题栏
+                //注册滑动监听
+                mObservableScrollView.setOnObservableScrollViewListener(FlowActivity.this);
+            }
+        });
+
+
+
+
+
+
+
+
+
+
 //        iv_east_asin_flow_image = findViewById(R.id.iv_east_asin_flow_image);
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); //去除半透明状态栏
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN); //全屏显示
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); //去除半透明状态栏
+//            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN); //全屏显示
+//            getWindow().setStatusBarColor(Color.TRANSPARENT);
+//        }
         WindowManager wm1 = getWindowManager();
         int width1 = wm1.getDefaultDisplay().getWidth();
         width =(width1-36)/2;
 
-        back = findViewById(R.id.iv_east_asin_flow_back);
+        back = findViewById(R.id.iv_header_left);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,9 +137,9 @@ public class FlowActivity extends BaseActivity {
         if (!TextUtils.isEmpty(areaP)&& areaP.length()>0){
             tv_title.setText(areaTitle);
         } else {
-            Intent intent = getIntent();
-            String searchkey = intent.getStringExtra("searchkey");
-            tv_title.setText(searchkey);
+//            Intent intent = getIntent();
+//            String searchkey = intent.getStringExtra("searchkey");
+//            tv_title.setText(searchkey);
         }
 
         getData(areaType);
@@ -129,9 +167,9 @@ public class FlowActivity extends BaseActivity {
 
     public void enter_this_product(FlowProductInfo flowProductInfo){
         Intent intent = new Intent(this, DetailActivity.class);
+
+//        intent.putExtra("pruducInfo",flowProductInfo);
         intent.putExtra("product_id", flowProductInfo.productid);
-        intent.putExtra("url", APIConstants.server_host + flowProductInfo.url);
-        Log.i("urlurlulr:",APIConstants.server_host + flowProductInfo.url+flowProductInfo.price);
         intent.putExtra("price", flowProductInfo.price);
         intent.putExtra("price_type", flowProductInfo.priceType);
         intent.putExtra("title", flowProductInfo.productname);
@@ -139,7 +177,6 @@ public class FlowActivity extends BaseActivity {
         intent.putExtra("coverage", flowProductInfo.coverage);
         intent.putExtra("effective_days", flowProductInfo.effective_days);
         intent.putExtra("notice", flowProductInfo.notice);
-        intent.putExtra("coverImage", flowProductInfo.coverImage);
         intent.putExtra("productnumber", flowProductInfo.productnumber);
         intent.putExtra("activedays", flowProductInfo.activedays);
         intent.putExtra("producttype", flowProductInfo.producttype);
@@ -212,11 +249,13 @@ public class FlowActivity extends BaseActivity {
                         gridLayoutManager_daily.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                             @Override
                             public int getSpanSize(int position) {
-                                if (position == flowProductInfoList_daily.size()-1&&flowProductInfoList_daily.size()%2==1){
-                                    return 2;
-                                }else {
-                                    return 1;
-                                }
+
+                                return 1;
+//                                if (position == flowProductInfoList_daily.size()-1&&flowProductInfoList_daily.size()%2==1){
+//                                    return 2;
+//                                }else {
+//                                    return 2;
+//                                }
                             }
                         });
 
@@ -224,11 +263,12 @@ public class FlowActivity extends BaseActivity {
                         gridLayoutManager_monthly.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                             @Override
                             public int getSpanSize(int position) {
-                                if (position == flowProductInfoList_monthly.size()-1&&flowProductInfoList_monthly.size()%2==1){
-                                    return 2;
-                                }else {
-                                    return 1;
-                                }
+                                return 1;
+//                                if (position == flowProductInfoList_monthly.size()-1&&flowProductInfoList_monthly.size()%2==1){
+//                                    return 2;
+//                                }else {
+//                                    return 2;
+//                                }
                             }
                         });
 
@@ -236,11 +276,13 @@ public class FlowActivity extends BaseActivity {
                         gridLayoutManager_multiplemonths.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                             @Override
                             public int getSpanSize(int position) {
-                                if (position == flowProductInfoList_multiplemonths.size()-1&&flowProductInfoList_multiplemonths.size()%2==1){
-                                    return 2;
-                                }else {
-                                    return 1;
-                                }
+
+                                return 1;
+//                                if (position == flowProductInfoList_multiplemonths.size()-1&&flowProductInfoList_multiplemonths.size()%2==1){
+//                                    return 2;
+//                                }else {
+//                                    return 2;
+//                                }
                             }
                         });
 
@@ -253,6 +295,26 @@ public class FlowActivity extends BaseActivity {
                 default:
                     break;
             }
+        }
+    }
+
+
+    @Override
+    public void onObservableScrollViewListener(int l, int t, int oldl, int oldt) {
+        if (t <= 0) {
+            //顶部图处于最顶部，标题栏透明
+            mHeaderContent.setBackgroundColor(Color.argb(0, 48, 63, 159));
+        } else if (t > 0 && t < mHeight) {
+            //滑动过程中，渐变
+            float scale = (float) t / mHeight;//算出滑动距离比例
+            float alpha = (255 * scale);//得到透明度
+            mHeaderContent.setBackgroundColor( getResources().getColor(R.color.baseColorLight));
+
+            mHeaderContent.setBackgroundColor(Color.argb((int) alpha, 16, 181, 255));
+        } else {
+            //过顶部图区域，标题栏定色
+//            mHeaderContent.setBackgroundColor( getResources().getColor(R.color.baseColorLight));
+            mHeaderContent.setBackgroundColor(Color.argb(255, 16, 181, 255));
         }
     }
 }

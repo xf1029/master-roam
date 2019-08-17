@@ -27,7 +27,7 @@
         android:layout_height="20dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:src="@mipmap/decrease_meituan"
+        android:src="@drawable/ic_sub"
         android:textColor="#000"
         />
 
@@ -54,7 +54,7 @@
         android:layout_height="20dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:src="@mipmap/increase_eleme"
+        android:src="@drawable/ic_add"
 
        />
 </LinearLayout>

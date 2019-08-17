@@ -148,6 +148,7 @@
                 android:id="@+id/tv_flow_countries"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:lineSpacingExtra="8sp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:gravity="left|center_vertical"

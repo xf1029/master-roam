@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.widget.Toast;
 
 
 import com.a51tgt.t6.R;
@@ -16,9 +15,6 @@ import com.a51tgt.t6.comm.APIConstants;
 import com.a51tgt.t6.net.OkHttpClientManager;
 import com.a51tgt.t6.net.SendRequest;
 import com.a51tgt.t6.ui.BaseActivity;
-import com.a51tgt.t6.ui.FlowProductDetailActivity;
-import com.a51tgt.t6.utils.PayUtil;
-import com.a51tgt.t6.utils.TipUtil;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -106,6 +102,8 @@ public class WXPayEntryActivity extends BaseActivity implements IWXAPIEventHandl
 //			finish();
 
 		}
+
+		finish();
 	}
 
 	class MyHandler extends Handler {

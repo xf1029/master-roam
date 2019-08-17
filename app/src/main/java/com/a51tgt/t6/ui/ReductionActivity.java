@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a51tgt.t6.MZApplication;
@@ -18,7 +19,7 @@ import com.a51tgt.t6.utils.TipUtil;
 
 public class ReductionActivity extends BaseActivity implements View.OnClickListener, OnNoticeUI{
 //    private Button setDeaultPwdBtn;
-    private Button reductionBtn;
+    private TextView reductionBtn;
    private  ImageView   iv_back;
 
     private DeviceSetDialog setDialog = new DeviceSetDialog();
@@ -30,7 +31,7 @@ public class ReductionActivity extends BaseActivity implements View.OnClickListe
 
 
 //        setDeaultPwdBtn = (Button)findViewById(R.id.setDefaultPwd);
-        reductionBtn = (Button)findViewById(R.id.reduction);
+        reductionBtn = findViewById(R.id.reduction);
         iv_back = (ImageView)findViewById(R.id.iv_back);
 //        setDeaultPwdBtn.setOnClickListener(this);
         reductionBtn.setOnClickListener(this);

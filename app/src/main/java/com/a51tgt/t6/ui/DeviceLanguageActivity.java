@@ -38,7 +38,7 @@ public class DeviceLanguageActivity extends BaseActivity implements View.OnClick
         setContentView(R.layout.activity_device_language);
         iv_set_chinese = findViewById(R.id.iv_set_chinese);
         iv_set_english = findViewById(R.id.iv_set_english);
-        iv_lan_back = findViewById(R.id.iv_lan_back);
+        iv_lan_back = findViewById(R.id.iv_back);
         iv_lan_back.setOnClickListener(this);
         iv_set_chinese.setOnClickListener(this);
         iv_set_english.setOnClickListener(this);
@@ -66,7 +66,7 @@ public class DeviceLanguageActivity extends BaseActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.iv_lan_back:
+            case R.id.iv_back:
                 finish();
                 break;
 

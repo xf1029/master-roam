@@ -5,33 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAFAFA"
+
     android:orientation="vertical" >
 
     <RelativeLayout
         android:id="@+id/tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:layout_height="@dimen/nav_height"
         android:background="@color/baseColorLight">
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="0dp"
-            android:layout_centerVertical="true"
-            android:padding="12dp"
-            android:src="@mipmap/ic_arrow_back_white"/>
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="8dp"
+            android:paddingRight="12dp"
+            android:src="@drawable/ic_return" />
+
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_header_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/iv_back"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="end"
             android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:text="@string/tip_payment"/>
+            android:maxLines="2"
+            android:text="@string/tip_payment"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <com.stripe.android.view.CardMultilineWidget
@@ -59,5 +64,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
+
 
 </LinearLayout>
