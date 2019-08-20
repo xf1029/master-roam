@@ -18,6 +18,8 @@ public class FlowProductInfo {
     public String price = "", priceType = "";
     public String productid = "", productnumber = "", activedays = "", producttype = "";
     public String url = "";
+    public  String text;
+    public  int textcolor;
     public String coverage = "", total_flow = "", effective_days = "", notice = "";
 
 
@@ -90,6 +92,22 @@ public class FlowProductInfo {
 
         if(data.containsKey("notice") && data.get("notice") != null)
             notice = data.get("notice").toString();
+    }
+
+    public void setTextcolor(int textcolor) {
+        this.textcolor = textcolor;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public int getTextcolor() {
+        return textcolor;
     }
 }
 

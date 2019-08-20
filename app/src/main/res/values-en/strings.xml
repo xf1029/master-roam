@@ -146,6 +146,9 @@
     <string name="title_modify_hotspot_password">Password</string>
     <string name="title_set_device_lang">Set Device Language</string>
     <string name="title_set_language">Language</string>
+    <string name="title_active_flow">Enable  traffic to purchase packet in mall</string>
+    <string name="title_active_flowdes">This traffic packet is only used for the purchasing traffic products in the mall through the APP, with a maximum of 30 minutes nd a maximum of 20M traffic per day</string>
+
     <string name="title_set_apn">Set APN</string>
     <string name="title_set_blacklist">Set Hotspot Blacklist</string>
     <string name="title_save_flow">Data Saver Mode</string>
@@ -279,7 +282,7 @@
     <string name="effective_days">"Effective Days: "</string>
     <string name="price">Price</string>
     <string name="notice">Notice</string>
-    <string name="day">Day</string>
+    <string name="day">day</string>
     <string name="coverage">"Coverage: "</string>
     <string name="set_device_language">Device Language Settings</string>
     <string name="msg_Device_not_exist">This Device Does Not Exist</string>
@@ -321,5 +324,10 @@
     <string name="title_buy_warn">At most</string>
     <string name="tilte_number">copies</string>
 
+    <string name="custom_empty_text">暂无数据</string>
+    <string name="custom_error_text">出错了</string>
+    <string name="custom_nonetwork_text">网络出错了</string>
+    <string name="custom_reloadBtn_text">重新加载</string>
+    <string name="custom_loading_text">加载中</string>
 
 </resources>

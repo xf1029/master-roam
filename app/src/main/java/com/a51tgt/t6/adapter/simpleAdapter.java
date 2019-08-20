@@ -64,7 +64,7 @@ public class simpleAdapter extends RecyclerView.Adapter {
             Log.e("height:", String.valueOf(layoutParams.height));
 //          layoutParams.height = (int) ((int) width1*0.75);
 
-            image.setLayoutParams(layoutParams);
+//            image.setLayoutParams(layoutParams);
 //          textView.setText(myData.get(position));
         }else{
 //          layoutParams.width = width1*2+36 ;
@@ -72,7 +72,7 @@ public class simpleAdapter extends RecyclerView.Adapter {
             Log.e("position111", String.valueOf(position));
             Log.e("width1111:",String.valueOf(width1));
             Log.e("height1111:", String.valueOf(layoutParams.height));
-            image.setLayoutParams(layoutParams);
+//            image.setLayoutParams(layoutParams);
         }
 
 //        image.setTag(position);

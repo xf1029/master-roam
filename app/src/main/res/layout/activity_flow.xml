@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
     <com.a51tgt.t6.ui.view.ObservableScrollView
         android:id="@+id/srcoller"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="none"
         >
 
 
         <LinearLayout
+            android:id="@+id/top"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -25,53 +28,64 @@
                 android:scaleType="fitXY"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/tv_title_daily"
+
+
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_title_daily"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="10dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textColor="#535353"-->
+                <!--android:textSize="14sp"-->
+                <!--android:layout_weight="3"-->
+                <!--android:text="日租包"/>-->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:textColor="#535353"
-                android:textSize="14sp"
-                android:layout_weight="3"
-                android:text="日租包"/>
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
+
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_daily"
+                app:fastScrollEnabled="false"
+                android:overScrollMode="never"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tv_title_monthly"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:textColor="#535353"
-                android:textSize="14sp"
-                android:layout_weight="3"
-                android:text="月租包"/>
+            <!--<TextView-->
+                <!--android:id="@+id/tv_title_monthly"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="10dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textColor="#535353"-->
+                <!--android:textSize="14sp"-->
+                <!--android:layout_weight="3"-->
+                <!--android:text="月租包"/>-->
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_monthly"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/rv_monthly"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"/>-->
 
-            <TextView
-                android:id="@+id/tv_title_multiplemonths"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:textColor="#535353"
-                android:textSize="14sp"
-                android:layout_weight="3"
-                android:text="加油包"/>
+            <!--<TextView-->
+                <!--android:id="@+id/tv_title_multiplemonths"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="10dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textColor="#535353"-->
+                <!--android:textSize="14sp"-->
+                <!--android:layout_weight="3"-->
+                <!--android:text="加油包"/>-->
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_multiplemonths"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/rv_multiplemonths"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"/>-->
 
         </LinearLayout>
 
@@ -81,5 +95,25 @@
 
     <include layout="@layout/include_header_itl" />
 
+    <com.ganxin.library.LoadDataLayout
+        android:id="@+id/loadDataLayout"
+        android:background="@color/white"
+        android:layout_marginTop="200dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/blue"
+            android:gravity="center"
+            android:text="contentView"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+    </com.ganxin.library.LoadDataLayout>
 
 </RelativeLayout>

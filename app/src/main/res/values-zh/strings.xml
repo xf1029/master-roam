@@ -142,13 +142,16 @@
     <string name="device_flow_package_endtime">结束时间</string>
     <string name="device_flow_left">剩余流量</string>
     <string name="device_flow_total_count">总流量</string>
-    <string name="device_flow_countries">使用国家</string>
+    <string name="device_flow_countries">覆盖区域</string>
 
     <string name="title_flow_mall">流量商城</string>
     <string name="title_device_setting">设置</string>
     <string name="title_modify_hotspot_password">修改热点密码</string>
     <string name="title_set_device_lang">设置设备语言</string>
     <string name="title_set_language">多语言</string>
+    <string name="title_active_flow">启用商城定向流量</string>
+    <string name="title_active_flowdes">该定向流量仅用于通过APP购买商城中流量产品使用，每天一次最多30分钟，最多20M流量</string>
+
     <string name="title_set_apn">设置APN</string>
     <string name="title_set_blacklist">设置热点访问黑名单</string>
     <string name="title_save_flow">省流量模式</string>
@@ -344,4 +347,10 @@
     <string name="title_buy_warn">最多可购买</string>
     <string name="tilte_number">份</string>
 
+
+    <string name="custom_empty_text">暂无数据</string>
+    <string name="custom_error_text">出错了</string>
+    <string name="custom_nonetwork_text">网络出错了</string>
+    <string name="custom_reloadBtn_text">重新加载</string>
+    <string name="custom_loading_text">加载中</string>
 </resources>

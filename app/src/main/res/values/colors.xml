@@ -69,4 +69,8 @@
 
     <color name="detail_des">#7a7a7a</color>
     <color name="order_bg">#f4f4f4</color>
+    <color name="color_dayily">#3f8fef</color>
+    <color name="color_month">#00c49e</color>
+    <color name="color_flow">#a880e8</color>
+
 </resources>

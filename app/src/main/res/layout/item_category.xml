@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:gravity="center"
+
     android:layout_height="wrap_content"
     >
 
     <ImageView
         android:id="@+id/id_category_pic"
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         android:src="@drawable/asia"
-        android:gravity="center"
+
         />
 
     <LinearLayout
@@ -31,44 +33,6 @@
             android:textColor="@color/white"
             android:textSize="16sp" />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:visibility="gone"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/lowest_price_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="CNY"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                />
-
-            <!--<TextView-->
-                <!--android:id="@+id/lowest_price"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginStart="3dp"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:layout_toEndOf="@id/lowest_price_type"-->
-                <!--android:text="12"-->
-                <!--android:textColor="@color/yellow"-->
-                <!--android:textSize="16sp"-->
-                <!--android:textStyle="bold" />-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginStart="3dp"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:layout_toEndOf="@id/lowest_price"-->
-                <!--android:text="@string/lowest_price_per_day"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:textSize="12sp" />-->
-
-        </RelativeLayout>
 
 
     </LinearLayout>

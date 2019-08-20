@@ -5,6 +5,6 @@
         />
 
     <solid
-        android:color="@color/color_dayily"
+        android:color="@color/color_month"
         />
 </shape>

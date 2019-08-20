@@ -71,7 +71,7 @@ public class SendRequest {
 
 //                Log.i("eeeeeeerr",e.getMessage());
 
-                msg.obj = null;
+                msg.obj = e.getMessage();
                 msg.what = mWhat;
                 mHandler.sendMessage(msg);
             }

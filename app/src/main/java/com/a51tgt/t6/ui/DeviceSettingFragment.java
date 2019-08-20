@@ -51,7 +51,7 @@ public class DeviceSettingFragment extends Fragment implements View.OnClickListe
     private LinearLayout ll_modify_hotspot_password, ll_reset,ll_set_apn,
             ll_set_blacklist, ll_set_translate_language,
             ll_flow_orders, ll_set_language, ll_card_settings, ll_set_device_language;
-    private LinearLayout ll_instruction, ll_software_version, ll_about_us,ll_product;
+    private LinearLayout ll_instruction, ll_software_version, ll_about_us,ll_product,ll_active_flow;
     private com.a51tgt.t6.ui.DeviceSetDialog setDialog = new com.a51tgt.t6.ui.DeviceSetDialog();
 
     public DeviceSettingFragment(){
@@ -87,6 +87,8 @@ public class DeviceSettingFragment extends Fragment implements View.OnClickListe
         ll_about_us  = rootView.findViewById(R.id.ll_about_us);
         ll_product  = rootView.findViewById(R.id.ll_about_product);
         ll_instruction  = rootView.findViewById(R.id.ll_instruction);
+        ll_active_flow = rootView.findViewById(R.id.ll_active_flow);
+
 
         if(APIConstants.deviceInfo != null){
             tv_sn.setText(APIConstants.sn);
@@ -120,6 +122,7 @@ public class DeviceSettingFragment extends Fragment implements View.OnClickListe
         ll_product.setOnClickListener(this);
         ll_instruction.setOnClickListener(this);
         ll_set_device_language.setOnClickListener(this);
+        ll_active_flow.setOnClickListener(this);
 
 
         if(APIConstants.deviceInfo != null && TextUtils.isEmpty(APIConstants.deviceInfo.getAppVersion())){
@@ -252,14 +255,11 @@ public class DeviceSettingFragment extends Fragment implements View.OnClickListe
                 startActivity(deviceLanguageIntent);
                 break;
 
-            case R.id.ll_connect_wifi:
-
+            case R.id.ll_active_flow:
+                Intent activeFlowIntent = new Intent(getActivity(), ActiveFlowActivity.class);
+                startActivity(activeFlowIntent);
                 break;
 
-            case R.id.ll_flow_orders:
-                Intent intent_device_orders = new Intent(getActivity(), com.a51tgt.t6.ui.DeviceOrdersActivity.class);
-                getActivity().startActivity(intent_device_orders);
-                break;
 
             case R.id.ll_software_version:
 //                if(APIConstants.isBluetoothConnection)

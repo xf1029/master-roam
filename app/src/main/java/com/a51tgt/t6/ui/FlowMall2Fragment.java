@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,17 +17,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.AbsListView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.a51tgt.t6.R;
 import com.a51tgt.t6.adapter.simpleAdapter;
@@ -35,8 +40,13 @@ import com.a51tgt.t6.bean.HttpResponseData;
 import com.a51tgt.t6.comm.APIConstants;
 import com.a51tgt.t6.net.OkHttpClientManager;
 import com.a51tgt.t6.net.SendRequest;
+import com.a51tgt.t6.ui.view.CustomGridLayoutManager;
+import com.a51tgt.t6.ui.view.GlideImageLoader;
 import com.a51tgt.t6.ui.view.ImageCarousel;
 import com.a51tgt.t6.ui.view.ImageInfo;
+import com.a51tgt.t6.ui.view.ObservableScrollView;
+import com.a51tgt.t6.ui.view.RecyclerViewSpacesItemDecoration;
+import com.youth.banner.Banner;
 //import com.facebook.drawee.backends.pipeline.Fresco;
 //import com.facebook.drawee.backends.pipeline.PipelineDraweeController;
 //import com.facebook.drawee.drawable.ScalingUtils;
@@ -48,22 +58,34 @@ import com.a51tgt.t6.ui.view.ImageInfo;
 //import com.facebook.imagepipeline.request.ImageRequestBuilder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class FlowMall2Fragment extends Fragment {
+import me.kareluo.ui.OptionMenu;
+import me.kareluo.ui.OptionMenuView;
+import me.kareluo.ui.PopupMenuView;
+import me.kareluo.ui.PopupView;
+
+public class FlowMall2Fragment extends Fragment  {
 
     String TAG = "FlowMall2Fragment";
 
     private RecyclerView rv_area_package;
     private List<String> flowProductInfoList1;
     private simpleAdapter adapter;
+    LinearLayout mselect;
     private List<Map<String, Object>> mData;
     private int width;
     View root;
 //    private RelativeLayout rl_fragment_fole_category;
 
+
+    private ObservableScrollView mObservableScrollView;
+    private Banner banner;
+    private int mHeight;
+    private LinearLayout mHeaderContent;
 
 
 
@@ -75,7 +97,7 @@ public class FlowMall2Fragment extends Fragment {
     private List<View> dots;//小点
 
     // 图片数据，包括图片标题、图片链接、数据、点击要打开的网站（点击打开的网页或一些提示指令）
-    private List<ImageInfo> imageInfoList;
+    private List<String> imageInfoList;
 
 
     public FlowMall2Fragment() {
@@ -98,16 +120,104 @@ public class FlowMall2Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        Fresco.initialize(getContext());
+
+
         View rootView = inflater.inflate(R.layout.fragment_flow_mall_2, container, false);
         root = rootView;
         rv_area_package = rootView.findViewById(R.id.recycleView);
 
+        //初始化控件
+        mObservableScrollView = rootView.findViewById(R.id.srcoller);
+       banner  =  rootView.findViewById(R.id.banner);
+
+        mHeaderContent = (LinearLayout)rootView.findViewById(R.id.ll_header_shop);
+mselect = mHeaderContent.findViewById(R.id.select_country);
+
+        // 根据menu资源文件创建
+        final PopupMenuView menuView = new PopupMenuView(getContext(), R.menu.pop_view, new MenuBuilder(getContext()));
+
+        menuView.setOrientation(LinearLayout.VERTICAL);
+
+// 设置点击监听事件
+        menuView.setOnMenuClickListener(new OptionMenuView.OnOptionMenuClickListener() {
+            @Override
+            public boolean onOptionMenuClick(int position, OptionMenu menu) {
+                Toast.makeText(getActivity(), menu.getTitle(), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+
+        mHeaderContent.findViewById(R.id.select_country).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                menuView.show(mselect);
+
+            }
+        });
+
+        //获取标题栏高度
+        ViewTreeObserver viewTreeObserver = banner.getViewTreeObserver();
+        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                banner.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                mHeight = banner.getHeight() - mHeaderContent.getHeight();//这里取的高度应该为图片的高度-标题栏
+                //注册滑动监听
+                mObservableScrollView.setOnObservableScrollViewListener(new ObservableScrollView.OnObservableScrollViewListener() {
+                    @Override
+                    public void onObservableScrollViewListener(int l, int t, int oldl, int oldt) {
+
+
+                        if (t <= 0) {
+                            //顶部图处于最顶部，标题栏透明
+                            mHeaderContent.setBackgroundColor(Color.argb(0, 48, 63, 159));
+                        } else if (t > 0 && t < mHeight) {
+                            //滑动过程中，渐变
+                            float scale = (float) t / mHeight;//算出滑动距离比例
+                            float alpha = (255 * scale);//得到透明度
+                            mHeaderContent.setBackgroundColor( getResources().getColor(R.color.baseColorLight));
+
+                            mHeaderContent.setBackgroundColor(Color.argb((int) alpha, 16, 181, 255));
+                        } else {
+                            //过顶部图区域，标题栏定色
+//            mHeaderContent.setBackgroundColor( getResources().getColor(R.color.baseColorLight));
+                            mHeaderContent.setBackgroundColor(Color.argb(255, 16, 181, 255));
+                        }
+
+                    }
+                });
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+//        Fresco.initialize(getContext());
+
+        initEvent();
+
+
+
+        Banner banner = (Banner)rootView.findViewById(R.id.banner);
+        //设置图片加载器
+        banner.setImageLoader(new GlideImageLoader());
+        //设置图片集合
+        banner.setImages(imageInfoList);
+        //banner设置方法全部调用完毕时最后调用
+        banner.start();
+
         WindowManager wm1 = getActivity().getWindowManager();
         int width1 = wm1.getDefaultDisplay().getWidth();
         width =(width1-36)/2;
-        initView(rootView);
-        initEvent();
+//        initView(rootView);
 //        imageStart();
 
 //        rl_fragment_fole_category = rootView.findViewById(R.id.rl_fragment_fole_category);
@@ -126,7 +236,8 @@ public class FlowMall2Fragment extends Fragment {
         adapter = new simpleAdapter(flowProductInfoList1, getContext(), width);
         rv_area_package.setAdapter(adapter);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
+        CustomGridLayoutManager gridLayoutManager = new CustomGridLayoutManager(getActivity(),2);
+        gridLayoutManager.setScrollEnabled(false);
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
@@ -140,7 +251,19 @@ public class FlowMall2Fragment extends Fragment {
             }
         });
 
+
+        HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
+
+
+        stringIntegerHashMap.put(RecyclerViewSpacesItemDecoration.BOTTOM_DECORATION,15);//底部间距
+        stringIntegerHashMap.put(RecyclerViewSpacesItemDecoration.LEFT_DECORATION,15);//左间距
+
+        stringIntegerHashMap.put(RecyclerViewSpacesItemDecoration.RIGHT_DECORATION,15);//右间距
+
+        rv_area_package.addItemDecoration(new RecyclerViewSpacesItemDecoration(stringIntegerHashMap));
+
         rv_area_package.setLayoutManager(gridLayoutManager);
+
 
         adapter.setOnItemClickListener(new simpleAdapter.OnItemClickListener() {
             @Override
@@ -212,7 +335,7 @@ public class FlowMall2Fragment extends Fragment {
 
 
 
-        Intent intent = new Intent(getActivity(), FlowActivity.class);
+        Intent intent = new Intent(getActivity(), CountryActivity.class);
 //        intent.putExtra("areaType", name);
 //        intent.putExtra("areaTitle", title);
 //        intent.putExtra("areaType",i);
@@ -223,11 +346,17 @@ public class FlowMall2Fragment extends Fragment {
      */
     private void initEvent() {
         imageInfoList = new ArrayList<>();
-        imageInfoList.add(new ImageInfo(1, "图片1，公告1啦啦啦啦，陆欢博客", "", "http://d.hiphotos.baidu.com/image/pic/item/6159252dd42a2834a75bb01156b5c9ea15cebf2f.jpg", "http://www.cnblogs.com/luhuan/"));
-        imageInfoList.add(new ImageInfo(1, "图片2，公告2啦啦啦啦，陆欢博客", "", "http://c.hiphotos.baidu.com/image/h%3D300/sign=cfce96dfa251f3dedcb2bf64a4eff0ec/4610b912c8fcc3ce912597269f45d688d43f2039.jpg", "http://www.cnblogs.com/luhuan/"));
-        imageInfoList.add(new ImageInfo(1, "图片3，公告3啦啦啦啦，陆欢博客", "", "http://e.hiphotos.baidu.com/image/pic/item/6a600c338744ebf85ed0ab2bd4f9d72a6059a705.jpg", "http://www.cnblogs.com/luhuan/"));
-        imageInfoList.add(new ImageInfo(1, "图片4，公告4啦啦啦啦，陆欢博客", "仅展示", "http://b.hiphotos.baidu.com/image/h%3D300/sign=8ad802f3801001e9513c120f880e7b06/a71ea8d3fd1f4134be1e4e64281f95cad1c85efa.jpg", ""));
-        imageInfoList.add(new ImageInfo(1, "图片5，公告5啦啦啦啦，陆欢博客", "仅展示", "http://e.hiphotos.baidu.com/image/h%3D300/sign=73443062281f95cab9f594b6f9177fc5/72f082025aafa40fafb5fbc1a664034f78f019be.jpg", ""));
+        imageInfoList.add("http://b.hiphotos.baidu.com/image/h%3D300/sign=8ad802f3801001e9513c120f880e7b06/a71ea8d3fd1f4134be1e4e64281f95cad1c85efa.jpg");
+        imageInfoList.add("http://b.hiphotos.baidu.com/image/h%3D300/sign=8ad802f3801001e9513c120f880e7b06/a71ea8d3fd1f4134be1e4e64281f95cad1c85efa.jpg");
+
+//        imageInfoList.add("http://d.hiphotos.baidu.com/image/pic/item/6159252dd42a2834a75bb01156b5c9ea15cebf2f.jpg");
+//        imageInfoList.add("http://d.hiphotos.baidu.com/image/pic/item/6159252dd42a2834a75bb01156b5c9ea15cebf2f.jpg");
+
+//        imageInfoList.add(new ImageInfo(1, "图片1，公告1啦啦啦啦，陆欢博客", "", "http://d.hiphotos.baidu.com/image/pic/item/6159252dd42a2834a75bb01156b5c9ea15cebf2f.jpg", "http://www.cnblogs.com/luhuan/"));
+//        imageInfoList.add(new ImageInfo(1, "图片2，公告2啦啦啦啦，陆欢博客", "", "http://c.hiphotos.baidu.com/image/h%3D300/sign=cfce96dfa251f3dedcb2bf64a4eff0ec/4610b912c8fcc3ce912597269f45d688d43f2039.jpg", "http://www.cnblogs.com/luhuan/"));
+//        imageInfoList.add(new ImageInfo(1, "图片3，公告3啦啦啦啦，陆欢博客", "", "http://e.hiphotos.baidu.com/image/pic/item/6a600c338744ebf85ed0ab2bd4f9d72a6059a705.jpg", "http://www.cnblogs.com/luhuan/"));
+//        imageInfoList.add(new ImageInfo(1, "图片4，公告4啦啦啦啦，陆欢博客", "仅展示", "http://b.hiphotos.baidu.com/image/h%3D300/sign=8ad802f3801001e9513c120f880e7b06/a71ea8d3fd1f4134be1e4e64281f95cad1c85efa.jpg", ""));
+//        imageInfoList.add(new ImageInfo(1, "图片5，公告5啦啦啦啦，陆欢博客", "仅展示", "http://e.hiphotos.baidu.com/image/h%3D300/sign=73443062281f95cab9f594b6f9177fc5/72f082025aafa40fafb5fbc1a664034f78f019be.jpg", ""));
 
 
     }
@@ -237,10 +366,10 @@ public class FlowMall2Fragment extends Fragment {
      */
     private void initView(View rootview) {
 
-        mViewPager = rootview.findViewById(R.id.viewPager);
-        Log.i("mvvvv",mViewPager.toString());
-        mTvPagerTitle =rootview.findViewById(R.id.tv_pager_title);
-        mLineLayoutDot =rootview. findViewById(R.id.lineLayout_dot);
+//        mViewPager = rootview.findViewById(R.id.viewPager);
+//        Log.i("mvvvv",mViewPager.toString());
+//        mTvPagerTitle =rootview.findViewById(R.id.tv_pager_title);
+//        mLineLayoutDot =rootview. findViewById(R.id.lineLayout_dot);
 
     }
 /*
@@ -362,6 +491,9 @@ public class FlowMall2Fragment extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
     }
 
+
+
+
     @SuppressLint("HandlerLeak")
     class MyHandler extends Handler {
 
@@ -415,7 +547,8 @@ public class FlowMall2Fragment extends Fragment {
                                 }
                             });
 
-                            GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
+                            CustomGridLayoutManager gridLayoutManager = new CustomGridLayoutManager(getActivity(),2);
+                            gridLayoutManager.setScrollEnabled(false);
                             gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                                 @Override
                                 public int getSpanSize(int position) {

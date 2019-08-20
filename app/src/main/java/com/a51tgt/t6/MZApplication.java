@@ -13,11 +13,13 @@ import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 
 import com.a51tgt.t6.abstract_face.OnNoticeUI;
 import com.a51tgt.t6.comm.APIConstants;
 import com.a51tgt.t6.net.CrashHandler;
 import com.a51tgt.t6.utils.AppLanguageUtils;
+import com.ganxin.library.LoadDataLayout;
 import com.squareup.picasso.OkHttpDownloader;
 import com.squareup.picasso.Picasso;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -78,6 +80,44 @@ public class MZApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+
+
+
+        LoadDataLayout.getBuilder()
+                .setLoadingText(getString(R.string.custom_loading_text))
+                .setLoadingTextSize(16)
+                .setLoadingTextColor(R.color.colorPrimary)
+                //.setLoadingViewLayoutId(R.layout.custom_loading_view) //如果设置了自定义loading视图,上面三个方法失效
+                .setEmptyImgId(R.drawable.ic_empty)
+                .setErrorImgId(R.drawable.ic_error)
+                .setNoNetWorkImgId(R.drawable.ic_no_network)
+                .setEmptyImageVisible(true)
+                .setErrorImageVisible(true)
+                .setNoNetWorkImageVisible(true)
+                .setEmptyText(getString(R.string.custom_empty_text))
+                .setErrorText(getString(R.string.custom_error_text))
+                .setNoNetWorkText(getString(R.string.custom_nonetwork_text))
+                .setAllTipTextSize(16)
+                .setAllTipTextColor(R.color.text_color_child)
+                .setAllPageBackgroundColor(R.color.pageBackground)
+                .setReloadBtnText(getString(R.string.custom_reloadBtn_text))
+                .setReloadBtnTextSize(16)
+                .setReloadBtnTextColor(R.color.colorPrimary)
+                .setReloadBtnBackgroundResource(R.drawable.selector_btn_normal)
+                .setReloadBtnVisible(true)
+                .setReloadClickArea(LoadDataLayout.FULL);
+
+//        LoadDataLayout loadDataLayout = new LoadDataLayout(MZApplication.getContext());
+//
+//
+//        loadDataLayout.setOnReloadListener(new LoadDataLayout.OnReloadListener() {
+//            @Override
+//            public void onReload(View v, int status) {
+//
+//            }
+//        });
+
 
 //        CrashHandler crashHandler = CrashHandler.getInstance();
 //        crashHandler.init(getApplicationContext());

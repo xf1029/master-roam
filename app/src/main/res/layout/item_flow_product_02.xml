@@ -23,7 +23,6 @@
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/default_img"
             android:gravity="center"
             />
 
@@ -31,7 +30,7 @@
             android:id="@+id/tv_use_day"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/white"
             android:textSize="13sp"
             android:gravity="center"
             android:background="@drawable/effiect_day"
@@ -64,7 +63,7 @@
                 android:layout_gravity="center"
                 android:text="USD"
                 android:gravity="center"
-                 />
+                />
 
             <TextView
                 android:id="@+id/tv_price"
